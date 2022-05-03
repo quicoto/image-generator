@@ -1,3 +1,3 @@
-# WordPress open graph image generator
+# Node open graph image generator
 
-Uses PHP's GD library to generate on the fly Open Graph (social media) images for your WordPress posts.
+Generates images with a given text and categories

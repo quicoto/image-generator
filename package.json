@@ -1,0 +1,21 @@
+{
+  "name": "wp-open-graph",
+  "version": "1.0.0",
+  "description": "Generates images with a given text and categories",
+  "scripts": {
+    "build": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quicoto/wp-open-graph.git"
+  },
+  "author": "Ricard Torres",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/quicoto/wp-open-graph/issues"
+  },
+  "homepage": "https://github.com/quicoto/wp-open-graph#readme",
+  "dependencies": {
+    "canvas": "^2.9.1"
+  }
+}
