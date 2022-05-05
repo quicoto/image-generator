@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Generates images with a given text and categories",
   "scripts": {
-    "build": ""
+    "build": "node index.js",
+    "lint": "eslint index.js --fix",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -17,5 +19,11 @@
   "homepage": "https://github.com/quicoto/wp-open-graph#readme",
   "dependencies": {
     "canvas": "^2.9.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.14.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.26.0",
+    "husky": "^7.0.4"
   }
 }
