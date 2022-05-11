@@ -8,7 +8,7 @@ Generates images with a given text and an ID using canvas.
 
 The database (source of the script) is generated based on WordPress posts titles with their ID's using the [generate-posts-ids.php](generate-posts-ids.php)
 
-Then by adding the [overwrite-open-graph.php](overwrite-open-graph) you can overwrite the [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/) plugin output for the Open Graph image.
+Then by adding the [overwrite-open-graph.php](overwrite-open-graph.php) you can overwrite the [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/) plugin output for the Open Graph image.
 
 Should the image file exist on disk, it will look something like:
 
