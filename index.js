@@ -1,5 +1,6 @@
 const fs = require('fs');
 const { createCanvas, loadImage } = require('canvas');
+const rimraf = require('rimraf');
 const utils = require('./utils');
 
 const width = 1200;
@@ -12,7 +13,7 @@ const paths = {
   profileImage: './profile-photo.png',
 };
 const fonts = {
-  postTitle: 'regular 70px Menlo',
+  postTitle: 'regular 120px Marker Felt',
   site: 'bold 30pt Menlo',
 };
 const colors = {
@@ -21,24 +22,29 @@ const colors = {
   site: '#fff',
 };
 
-const imageCanvas = createCanvas(width, height);
-const context = imageCanvas.getContext('2d');
+// Delete the directory content
+rimraf.sync(paths.images);
 
-context.fillStyle = colors.background;
-context.fillRect(0, 0, width, height);
-
-context.font = fonts.postTitle;
-context.textAlign = 'center';
-context.textBaseline = 'top';
+// Create the requried folders
+fs.mkdir(paths.images, () => {});
 
 const databaseContent = fs.readFileSync(paths.database, { encoding: 'utf8', flag: 'r' });
 const lines = utils.getLines(databaseContent);
 
 lines.forEach((line) => {
+  const imageCanvas = createCanvas(width, height);
+  const context = imageCanvas.getContext('2d');
   const content = line.split('|');
   const postId = content[0];
   const postTitle = content[1];
   let textWidth;
+
+  context.fillStyle = colors.background;
+  context.fillRect(0, 0, width, height);
+
+  context.font = fonts.postTitle;
+  context.textAlign = 'center';
+  context.textBaseline = 'top';
 
   context.fillRect(600 - textWidth / 2 - 10, 170 - 5, textWidth + 20, 120);
   context.fillStyle = colors.postTitle;

@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/quicoto/wp-open-graph#readme",
   "dependencies": {
-    "canvas": "^2.9.1"
+    "canvas": "^2.9.1",
+    "rimraf": "^3.0.2"
   },
   "devDependencies": {
     "eslint": "^8.14.0",
