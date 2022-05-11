@@ -6,9 +6,9 @@ Generates images with a given text and an ID using canvas.
 
 ⚠️ You don't have to integrate with WordPress if you don't want to. Fork the project and use it as a standalone or with another data source.
 
-The database (source of the script) is generated based on WordPress posts titles with their ID's using the [generate-posts-ids.php](blob/main/generate-posts-ids.php)
+The database (source of the script) is generated based on WordPress posts titles with their ID's using the [generate-posts-ids.php](generate-posts-ids.php)
 
-Then by adding the [overwrite-open-graph.php](blob/main/overwrite-open-graph) you can overwrite the [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/) plugin output for the Open Graph image.
+Then by adding the [overwrite-open-graph.php](overwrite-open-graph) you can overwrite the [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/) plugin output for the Open Graph image.
 
 Should the image file exist on disk, it will look something like:
 
@@ -20,7 +20,7 @@ You can either place this script inside your WordPress theme or use a WordPress 
 
 ## How it works?
 
-1. Get an array of images to create (title+id) from [database.txt](blob/main/database.txt)
+1. Get an array of images to create (title+id) from [database.txt](database.txt)
 2. Create a canvas with background color
 3. Defines font sizes and colors
 4. Adds a text to the canvas, check for word wrapping.
