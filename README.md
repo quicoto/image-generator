@@ -2,7 +2,7 @@
 
 Generates images with a given text and an ID using canvas.
 
-## [Open Graph](https://ogp.me/) and WordPress
+## [Open Graph](https://ogp.me/) and [WordPress](https://wordpress.org/)
 
 ⚠️ You don't have to integrate with WordPress if you don't want to. Fork the project and use it as a standalone or with another data source.
 
