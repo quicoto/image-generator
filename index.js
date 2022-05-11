@@ -3,6 +3,8 @@ const { createCanvas, loadImage } = require('canvas');
 const rimraf = require('rimraf');
 const utils = require('./utils');
 
+const delay = 1000; // Throttle to prevent memory issues
+let throttle = 0;
 const width = 1200;
 const height = 630;
 const titleMaxWidth = 1000;
@@ -32,31 +34,38 @@ const databaseContent = fs.readFileSync(paths.database, { encoding: 'utf8', flag
 const lines = utils.getLines(databaseContent);
 
 lines.forEach((line) => {
-  const imageCanvas = createCanvas(width, height);
-  const context = imageCanvas.getContext('2d');
-  const content = line.split('|');
-  const postId = content[0];
-  const postTitle = content[1];
-  let textWidth;
+  setTimeout(() => {
+    const imageCanvas = createCanvas(width, height);
+    const context = imageCanvas.getContext('2d');
+    const content = line.split('|');
+    const postId = content[0];
+    const postTitle = content[1];
+    let textWidth;
 
-  context.fillStyle = colors.background;
-  context.fillRect(0, 0, width, height);
+    // eslint-disable-next-line no-console
+    console.log(`Starting time: ${new Date().toLocaleString()} - ${postTitle}`);
 
-  context.font = fonts.postTitle;
-  context.textAlign = 'center';
-  context.textBaseline = 'top';
+    context.fillStyle = colors.background;
+    context.fillRect(0, 0, width, height);
 
-  context.fillRect(600 - textWidth / 2 - 10, 170 - 5, textWidth + 20, 120);
-  context.fillStyle = colors.postTitle;
-  utils.wrapText(context, postTitle, 600, 80, titleMaxWidth, titleLineHeight);
+    context.font = fonts.postTitle;
+    context.textAlign = 'center';
+    context.textBaseline = 'top';
 
-  context.fillStyle = colors.site;
-  context.font = fonts.site;
-  context.fillText('ricard.dev', 580, 520);
+    context.fillRect(600 - textWidth / 2 - 10, 170 - 5, textWidth + 20, 120);
+    context.fillStyle = colors.postTitle;
+    utils.wrapText(context, postTitle, 600, 80, titleMaxWidth, titleLineHeight);
 
-  loadImage(paths.profileImage).then((image) => {
-    context.drawImage(image, 350, 510, 70, 70);
-    const buffer = imageCanvas.toBuffer('image/png');
-    fs.writeFileSync(`${paths.images}/${postId}.png`, buffer);
-  });
+    context.fillStyle = colors.site;
+    context.font = fonts.site;
+    context.fillText('ricard.dev', 580, 520);
+
+    loadImage(paths.profileImage).then((image) => {
+      context.drawImage(image, 350, 510, 70, 70);
+      const buffer = imageCanvas.toBuffer('image/png');
+      fs.writeFileSync(`${paths.images}/${postId}.png`, buffer);
+    });
+  }, throttle);
+
+  throttle += delay;
 });
