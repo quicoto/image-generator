@@ -30,7 +30,7 @@ const customFonts = {
     name: 'Kefa',
   },
   siteName: {
-    file: 'kefa-regular.ttf',
+    file: 'menlo-regular.ttf',
     name: 'Menlo',
   },
 };
