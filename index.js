@@ -1,5 +1,9 @@
 const fs = require('fs');
-const { createCanvas, loadImage } = require('canvas');
+const {
+  createCanvas,
+  loadImage,
+  registerFont,
+} = require('canvas');
 const rimraf = require('rimraf');
 const utils = require('./utils');
 
@@ -16,8 +20,19 @@ const title = {
 };
 const paths = {
   images: './images',
+  fonts: './fonts',
   database: './database.txt',
   profileImage: './profile-photo.png',
+};
+const customFonts = {
+  postTitle: {
+    file: 'kefa-regular.ttf',
+    name: 'Kefa',
+  },
+  siteName: {
+    file: 'kefa-regular.ttf',
+    name: 'Menlo',
+  },
 };
 const fonts = {
   postTitle: 'regular 90px Kefa',
@@ -35,6 +50,11 @@ rimraf.sync(paths.images);
 
 // Create the required folder
 fs.mkdir(paths.images, () => {});
+
+// Register custom fonts
+Object.keys(customFonts).forEach((font) => {
+  registerFont(`${paths.fonts}/${customFonts[font].file}`, { family: customFonts[font].name });
+});
 
 // Read the database file and get all the lines in an array
 const databaseContent = fs.readFileSync(paths.database, { encoding: 'utf8', flag: 'r' });
