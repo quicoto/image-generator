@@ -12,7 +12,7 @@ module.exports.wrapText = (ctx, text, x, y, maxTextWidth, lineHeight) => {
       ctx.fillText(line, x, y);
       line = `${words[n]} `;
       // eslint-disable-next-line no-param-reassign
-      y += lineHeight * 1.5;
+      y += lineHeight * 1.2;
     } else {
       line = testLine;
     }

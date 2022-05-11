@@ -13,7 +13,7 @@ const paths = {
   profileImage: './profile-photo.png',
 };
 const fonts = {
-  postTitle: 'regular 120px Marker Felt',
+  postTitle: 'regular 90px Kefa',
   site: 'bold 30pt Menlo',
 };
 const colors = {
@@ -52,10 +52,10 @@ lines.forEach((line) => {
 
   context.fillStyle = colors.site;
   context.font = fonts.site;
-  context.fillText('ricard.dev', 580, 460);
+  context.fillText('ricard.dev', 580, 520);
 
   loadImage(paths.profileImage).then((image) => {
-    context.drawImage(image, 350, 450, 70, 70);
+    context.drawImage(image, 350, 510, 70, 70);
     const buffer = imageCanvas.toBuffer('image/png');
     fs.writeFileSync(`${paths.images}/${postId}.png`, buffer);
   });
